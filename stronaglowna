@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravvis - Moja Strona</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MedievalSharp:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'MedievalSharp', serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background: url('https://darkzero.co.uk/wp-content/uploads/2015/07/TheWitcher302.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: transparent;
+            overflow: hidden;
+        }
+        .snowflake {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: snow-fall 10s linear infinite, wind 20s linear infinite;
+        }
+        @keyframes snow-fall {
+            0% { top: -10%; }
+            100% { top: 100%; }
+        }
+        @keyframes wind {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(50px); }
+            100% { transform: translateX(-50px); }
+        }
+        @keyframes snow-storm {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #00f2ff;
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            color: #00f2ff;
+            text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 15px #00f2ff;
+            animation: freeze 1.5s ease-in-out infinite alternate;
+        }
+        header p {
+            font-size: 1.5em;
+            color: #a0eaff;
+            text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #00f2ff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+            position: relative;
+            z-index: 2;
+            margin-bottom: 100px; /* Space for footer */
+        }
+        h2 {
+            color: #00f2ff;
+            text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff;
+            animation: fadeIn 2s ease-in-out;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #00f2ff;
+            text-decoration: none;
+            border-bottom: 1px solid #00f2ff;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 2px solid #00f2ff;
+            width: 100%;
+            z-index: 2;
+            margin-top: auto;
+        }
+        .text-outline {
+            text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .gallery img {
+            width: calc(50% - 10px);
+            height: auto;
+            border: 2px solid #00f2ff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #00f2ff;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #00f2ff;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+        .contact-form input[type="submit"] {
+            background: #00f2ff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .contact-form input[type="submit"]:hover {
+            background: #00bfff;
+        }
+        @keyframes freeze {
+            from {
+                text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 15px #00f2ff;
+            }
+            to {
+                text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff, 0 0 30px #00f2ff;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="snow" id="snow"></div>
+    
+    <header>
+        <h1 class="text-outline">Witaj na stronie Ravvis!</h1>
+        <p class="text-outline">Gram w gry i gadam bzdury do mikrofonu.</p>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>O Mnie</h2>
+            <p>Witaj! Nazywam się Ravvis. Jestem zapalonym graczem i streamerem, który uwielbia dzielić się swoją pasją do gier wideo. Moje zainteresowania obejmują różne gatunki gier, a podczas moich transmisji znajdziesz zarówno poważne rozgrywki, jak i dużo zabawnych momentów.</p>
+        </section>
+
+        <section id="setup">
+            <h2>Mój Setup</h2>
+            <ul>
+                <li><strong>Procesor:</strong> <a href="https://przykładowy_sklep.com/ryzen-5-1600af" target="_blank" rel="noopener noreferrer">Ryzen 5 1600AF 3.2 GHz</a></li>
+                <li><strong>Grafika:</strong> <a href="https://przykładowy_sklep.com/zotac-geforce-gtx-970" target="_blank" rel="noopener noreferrer">Zotac GeForce GTX 970, 4GB GDDR5 (256 Bit)</a></li>
+                <li><strong>RAM:</strong> <a href="https://przykładowy_sklep.com/gskill-aegis-16gb" target="_blank" rel="noopener noreferrer">G.Skill Aegis, DDR4, 16 GB, 3200MHz, CL16 (2x8)</a></li>
+                               <li><strong>Dyski:</strong> Dysk SSD <a href="https://przykładowy_sklep.com/lexar-nm620-512gb" target="_blank" rel="noopener noreferrer">Lexar NM620 512GB M.2</a>, Dysk HDD <a href="https://przykładowy_sklep.com/wd-caviar-blue-1tb" target="_blank" rel="noopener noreferrer">WD Caviar Blue 1TB 3.5" SATA III</a></li>
+            </ul>
+        </section>
+
+        <section id="peripherals">
+            <h2>Peryferia</h2>
+            <ul>
+                <li><strong>Monitor:</strong> <a href="https://przykładowy_sklep.com/dell-p2319h" target="_blank" rel="noopener noreferrer">Dell P2319H 23"</a></li>
+                <li><strong>Klawiatura:</strong> <a href="https://przykładowy_sklep.com/genesis-rhod-350" target="_blank" rel="noopener noreferrer">Genesis RHOD 350</a></li>
+                <li><strong>Myszka:</strong> <a href="https://przykładowy_sklep.com/genesis-xenon-220" target="_blank" rel="noopener noreferrer">Genesis Xenon 220</a></li>
+                <li><strong>Podkładka:</strong> <a href="https://przykładowy_sklep.com/krux-space-gun-xxl" target="_blank" rel="noopener noreferrer">KRUX Space Gun XXL</a></li>
+                <li><strong>Słuchawki:</strong> <a href="https://przykładowy_sklep.com/akg-k52" target="_blank" rel="noopener noreferrer">AKG K52</a></li>
+                <li><strong>Mikrofon:</strong> <a href="https://przykładowy_sklep.com/novox-nc-1" target="_blank" rel="noopener noreferrer">Novox NC-1</a></li>
+                <li><strong>Gamepad:</strong> <a href="https://przykładowy_sklep.com/microsoft-xbox-360" target="_blank" rel="noopener noreferrer">Microsoft Xbox 360</a></li>
+            </ul>
+        </section>
+
+        <section id="faq">
+            <h2>FAQ</h2>
+            <ul>
+                <li><strong>Jak mogę zacząć oglądać Twoje streamy?</strong> Po prostu śledź mój kanał na <a href="https://twitch.tv/twój_kanał" target="_blank" rel="noopener noreferrer">Twitch</a> i sprawdzaj harmonogram transmisji.</li>
+                <li><strong>Gdzie kupuję sprzęt?</strong> Sprzęt, który używam, można znaleźć w sklepach internetowych, takich jak <a href="https://przykładowy_sklep.com" target="_blank" rel="noopener noreferrer">przykładowy sklep</a>.</li>
+                <li><strong>Jak mogę się z Tobą skontaktować?</strong> Możesz skorzystać z formularza kontaktowego na tej stronie lub wysłać e-mail na adres <a href="mailto:twójemail@domena.com">twójemail@domena.com</a>.</li>
+                <li><strong>Jakie są Twoje ulubione gry?</strong> Uwielbiam grać w gry RPG, takie jak <a href="https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/" target="_blank" rel="noopener noreferrer">Wiedźmin 3</a>, oraz w gry akcji i przygodowe.</li>
+            </ul>
+        </section>
+
+        <section id="social-media">
+            <h2>Social Media</h2>
+            <div class="social-icons">
+                <a href="https://twitter.com/TwójProfil" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="https://instagram.com/TwójProfil" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://facebook.com/TwójProfil" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <form class="contact-form" action="mailto:twójemail@domena.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Imię i nazwisko" required>
+                <input type="email" name="email" placeholder="Adres e-mail" required>
+                <textarea name="message" rows="5" placeholder="Twoja wiadomość" required></textarea>
+                <input type="submit" value="Wyślij wiadomość">
+            </form>
+        </section>
+
+        <section id="gallery">
+            <h2>Galeria</h2>
+            <div class="gallery">
+                <img src="link_do_zrzutu_ekranu1.jpg" alt="Zrzut ekranu z gry">
+                <img src="link_do_zrzutu_ekranu2.jpg" alt="Inny zrzut ekranu z gry">
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Ravvis. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        // Generate snowflakes
+        const snowContainer = document.querySelector('.snow');
+        const snowflakeCount = 100;
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            snowflake.style.opacity = Math.random();
+            snowflake.style.width = `${Math.random() * 3 + 2}px`;
+            snowflake.style.height = snowflake.style.width;
+            snowContainer.appendChild(snowflake);
+        }
+    </script>
+</body>
+</html>
